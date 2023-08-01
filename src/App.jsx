@@ -46,8 +46,8 @@ function App() {
 
                 <div id='info-box-container'>
                     <div id='info-box'>
-                        <div id="battery-box">
-                            <Clock/>
+                        <div id="header-box">
+                            <Clock className='clock'/>       
                             <Battery soc={soc} voltage={data.battery_voltage} width={125} height={30} />
                         </div>
                         <div id="temperature-box">
@@ -58,8 +58,13 @@ function App() {
                 </div>
 
             </div>
+            {/* <Probe></Probe> */}
         </div>
     )
+}
+
+const Probe = () => {
+    console.log('re-rendered')
 }
 
 export default App
