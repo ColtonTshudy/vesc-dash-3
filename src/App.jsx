@@ -8,6 +8,9 @@ import Battery from './components/battery.jsx'
 import MotorTemp from './components/motor-temp.jsx'
 import MosfetTemp from './components/mosfet-temp.jsx'
 import Clock from './components/clock.jsx'
+import Speedometer from './components/speedometer.jsx'
+import PowerGauge from './components/power-gauge.jsx'
+
 
 function App() {
     const [data, setData] = useState({})
@@ -39,6 +42,7 @@ function App() {
     }, [])
 
     const soc = (config['capacity_ah'] - data.ah_consumed) / config['capacity_ah']
+    const power_in = data.battery_voltage*data.battery_current
 
     return (
         <div className="center-screen">
@@ -48,7 +52,7 @@ function App() {
                     <div id='info-box'>
                         <div id="header-box">
                             <Clock className='clock'/>       
-                            <Battery soc={soc} voltage={data.battery_voltage} width={125} height={30} />
+                            <Battery soc={soc} voltage={data.battery_voltage} width={125} height={30} charging={power_in<0}/>
                         </div>
                         <div id="temperature-box">
                             <MosfetTemp value={data.mot_temp} width={125} height={40} warn={config['warn_temp_mot']} />
@@ -56,6 +60,9 @@ function App() {
                         </div>
                     </div>
                 </div>
+
+                <Speedometer className='speedometer' value={data.mph} min={0} max={config['max_speed']} ticks={5} size={500}/>
+                <PowerGauge className='power-gauge' value={power_in/1000} min={0} max={10} ticks={5} size={500}/>
 
             </div>
             {/* <Probe></Probe> */}
