@@ -1,0 +1,46 @@
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.body {
+    border: solid 2px white;
+    flex: 0 0 calc(100% - 14px);
+    height: 100%;
+    border-radius: .5vmax;
+    display: flex;
+    max-width: calc(100% - 14px);
+}
+
+.nub {
+    flex: 0 0 7px;
+    height: 40%;
+    border-top-right-radius: .2*99999;
+    border-bottom-right-radius: .2*99999;
+    background: white;
+}
+
+.fill {
+    max-width: 100%;
+    border-radius: .3vmax;
+    margin: 2px;
+    height: calc(100%-4px);
+    width: 100%;
+    
+    display: flex;
+    align-items: center;
+}
+
+.fill>label {
+    font-family: "San Francisco";
+    font-weight: bold;
+    color: transparent;
+
+    text-align: center;
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    flex: 0 0 100%;
+}
