@@ -5,7 +5,9 @@ import './css/Fonts.css'
 import Socket from './CAN-subscriber.jsx'
 
 import Battery from './components/battery.jsx'
-
+import MotorTemp from './components/motor-temp.jsx'
+import MosfetTemp from './components/mosfet-temp.jsx'
+import Clock from './components/clock.jsx'
 
 function App() {
     const [data, setData] = useState({})
@@ -36,22 +38,24 @@ function App() {
         }
     }, [])
 
+    const soc = (config['capacity_ah'] - data.ah_consumed) / config['capacity_ah']
+
     return (
         <div className="center-screen">
             <div className="viewport">
 
-                <div id='info-box'>
-                    <div id="battery-box">
-                        <Battery soc={data.soc} voltage={data.battery_voltage} width={150} height={40} />
+                <div id='info-box-container'>
+                    <div id='info-box'>
+                        <div id="battery-box">
+                            <Clock/>
+                            <Battery soc={soc} voltage={data.battery_voltage} width={125} height={30} />
+                        </div>
+                        <div id="temperature-box">
+                            <MosfetTemp value={data.mot_temp} width={125} height={40} warn={config['warn_temp_mot']} />
+                            <MotorTemp value={data.mos_temp} width={125} height={40} warn={config['warn_temp_mos']} />
+                        </div>
                     </div>
-                    {/* <div id="temperature-box">
-                        <IconBox value={data.mot_temp} units='°C' image={motorIcon} width={125} height={40} align='left' warn={config['warn_temp_mot']} />
-                        <IconBox value={data.mos_temp} units='°C' image={mosfetIcon} width={125} height={40} align='right' warn={config['warn_temp_mos']} />
-                    </div> */}
                 </div>
-
-
-
 
             </div>
         </div>

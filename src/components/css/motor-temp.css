@@ -1,0 +1,11 @@
+#mottemp_main {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+#mottemp_main>label {
+    text-align: left;
+    overflow: hidden;
+    font-family: San Francisco;
+}

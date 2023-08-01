@@ -1,0 +1,11 @@
+#mostemp_main {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+#mostemp_main>label {
+    font-family: San Francisco;
+    text-align: left;
+    overflow: hidden;
+}
