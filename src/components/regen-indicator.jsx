@@ -9,7 +9,7 @@ const RegenIndicator = ({ className, on }) => {
 
     return (
         <div className={className}>
-            <svg fill={fillColor} height='100%' width='100%' viewBox="0 0 512 512">
+            <svg fill={fillColor} height='100%'viewBox="0 0 512 512">
                 <g>
                     <g>
                         <g>

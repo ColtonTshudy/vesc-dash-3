@@ -4,8 +4,11 @@ import { RadialGauge } from 'canvas-gauges';
 const PowerGauge = ({ className, value = 0, min = 0, max = 0, ticks = 0, size }) => {
     const canvasRef = useRef();
     const gaugeRef = useRef();
+    const divRef = useRef();
 
     useEffect(() => {
+        const size = divRef.current.clientHeight
+
         gaugeRef.current = new RadialGauge({
             barStartPosition: 'right',
             renderTo: canvasRef.current,
@@ -51,16 +54,13 @@ const PowerGauge = ({ className, value = 0, min = 0, max = 0, ticks = 0, size })
         gaugeRef.current.draw();
 
         return () => {
-            gaugeRef.current.destroy();
-        };
+            gaugeRef.current = null
+        }
     });
 
     return (
-        <div className={className} style={{ margin: `${-size / 2}px 0 0 ${-size / 2}px` }}>
+        <div className={className} ref={divRef}>
             <canvas ref={canvasRef} />
-            <div id="speedometer-ro">
-                
-            </div>
         </div>
     )
 };

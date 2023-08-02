@@ -13,10 +13,12 @@ import PowerGauge from './components/power-gauge'
 import NecoGif from './components/neco-gif'
 import Efficiency from './components/efficiency'
 import Gear from './components/gear'
+import RegenIndicator from './components/regen-indicator'
+import SpeedReadout from './components/speed-readout'
+import PowerReadout from './components/power-readout'
 
 import Miku from './images/miku.png'
-import RegenIndicator from './components/regen-indicator'
-
+import Trees from './images/winter_trees_snow_night_landscape_96069_1920x1080.jpg'
 
 function App() {
     const [data, setData] = useState({})
@@ -55,9 +57,9 @@ function App() {
     return (
         <div className="center-screen">
             <div className="viewport">
-                <img src={Miku} style={{ position: 'absolute', width: '100%', height: '100%', filter: 'brightness(.2) blur(4px)' }} />
+                <img src={Trees} style={{ position: 'absolute', width: '100%', height: '100%', filter: 'brightness(1) blur(0px)' }} />
 
-                <div id='info-box-container'>
+                <div className='fullscreen-container'>
                     <div id='info-box'>
                         <div id="header-box">
                             <Clock className='clock' />
@@ -68,19 +70,34 @@ function App() {
                             <MotorTemp value={data.mos_temp} width={125} height={40} warn={config['warn_temp_mos']} />
                         </div>
                         <div id="item-3">
-                            <Efficiency className={'efficiency'} value={efficiency}/>
+                            <div className="alert-zone"> </div>
+                            <Efficiency className={'efficiency'} value={efficiency} />
+                            <div className="alert-zone">
+                                <RegenIndicator className='regen-indicator' on={power_in < 0} />
+                            </div>
                         </div>
                         <div id="item-4">
-                            <Gear className='gear' duty={data.duty_cycle}/>
+                            <Gear className='gear' duty={data.duty_cycle} />
                         </div>
                         {/* <NecoGif className='gif' speed={data.mph} max={config['max_speed']}/> */}
                     </div>
                 </div>
 
-                <Speedometer className='speedometer' value={data.mph} min={0} max={config['max_speed']} ticks={6} size={500} />
-                <PowerGauge className='power-gauge' value={power_in / 1000} min={0} max={10} ticks={6} size={500} />
-                
-                <RegenIndicator className='regen-indicator' on={power_in<0}/>
+                <div className='fullscreen-container'>
+                    <Speedometer className='speedometer gauges' value={data.mph} min={0} max={config['max_speed']} ticks={6} size={500} />
+                    <PowerGauge className='power-gauge gauges' value={power_in / 1000} min={0} max={10} ticks={6} size={500} />
+                </div>
+
+                <div className='fullscreen-container'>
+                    <div id='readout-container'>
+                        <div className="readout-box">
+                            <SpeedReadout className="speed-readout" velocity={data.mph} topSpeed={50} avgSpeed={50} />
+                        </div>
+                        <div className="readout-box">
+                            <PowerReadout className="power-readout" power={power_in} />
+                        </div>
+                    </div>
+                </div>
 
             </div>
             {/* <Probe></Probe> */}

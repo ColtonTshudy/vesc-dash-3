@@ -20,7 +20,7 @@
     max-width: 100%;
     border-radius: .3vmax;
     margin: 2px;
-    height: calc(100%-4px);
+    height: calc(100% - 4px);
     width: 100%;
     
     display: flex;

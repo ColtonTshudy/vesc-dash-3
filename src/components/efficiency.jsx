@@ -12,8 +12,8 @@ const Efficiency = ({ className, value }) => {
     return (
         <div className={className} id="eff-main" ref={ref}>
             <div id="eff-value-box">
-                <label id="eff-value" style={{
-                    fontSize: `${height * .80}px`,
+                <label id="eff-value" style={{  
+                    fontSize: `${height * .65}px`,
                 }}>
 
                     {clamp(padZeros(0, value * 100), 0, 100)}%
@@ -21,7 +21,7 @@ const Efficiency = ({ className, value }) => {
             </div>
             <div id="eff-seperator" />
             <label id='eff-subtitle' style={{
-                fontSize: `${height * .18}px`,
+                fontSize: `${height * .15}px`,
             }}>
                 Eco
             </label>

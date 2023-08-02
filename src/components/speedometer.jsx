@@ -1,11 +1,14 @@
 import React, { useRef, useEffect } from 'react';
 import { RadialGauge } from 'canvas-gauges';
 
-const Speedometer = ({ className, value = 0, min = 0, max = 0, ticks = 0, size }) => {
+const Speedometer = ({ className, value = 0, min = 0, max = 0, ticks = 0 }) => {
     const canvasRef = useRef();
     const gaugeRef = useRef();
+    const divRef = useRef();
 
     useEffect(() => {
+        const size = divRef.current.clientHeight;
+
         gaugeRef.current = new RadialGauge({
             barStartPosition: 'left',
             renderTo: canvasRef.current,
@@ -24,7 +27,7 @@ const Speedometer = ({ className, value = 0, min = 0, max = 0, ticks = 0, size }
             colorNeedle: "rgb(255,200,200,1)",
             needleStart: 0,
             needleEnd: 100,
-            colorPlate: 'black',
+            colorPlate: 'transparent',
             fontValueSize: 60,
             fontNumbersSize: 25,
             valueInt: 2,
@@ -43,24 +46,21 @@ const Speedometer = ({ className, value = 0, min = 0, max = 0, ticks = 0, size }
             colorNeedleCircleOuterEnd: 'black',
             colorMajorTicks: 'white',
             colorMinorTicks: 'lightgrey',
-            colorNumbers: 'white',
+            colorNumbers: 'white',  
             colorBorderInner: 'transparent',
             colorBorderOuter: 'transparent',
             colorBorderMiddle: 'transparent',
-        });
+        }, []);
         gaugeRef.current.draw();
 
         return () => {
-            gaugeRef.current.destroy();
-        };
+            gaugeRef.current = null
+        }
     });
 
     return (
-        <div className={className} style={{ margin: `${-size / 2}px 0 0 ${-size / 2}px` }}>
+        <div className={className} ref={divRef}>
             <canvas ref={canvasRef} />
-            <div id="speedometer-ro">
-                
-            </div>
         </div>
     )
 };
