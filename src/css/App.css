@@ -12,7 +12,7 @@ body {
     width: 1024px;
     height: 600px;
     color: white;
-    background: black;
+    background: transparent;
     overflow: hidden;
     position: relative;
     z-index: -10;
@@ -23,6 +23,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    z-index: -9;
 }
 
 #info-box-container {
@@ -49,6 +50,8 @@ body {
 
     z-index: 100;
     background: black;
+
+    min-width: 27%;
 }
 
 #header-box {
@@ -60,24 +63,57 @@ body {
     width: 100%
 }
 
-#temperature-box {
-    display: flex;
-    flex-direction: row;
-    margin-top: 5%;
-}
-
 .clock {
     height: 100%;
+}
+
+#temperature-box {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 5%;
+    justify-content: space-between;
+    width: 100%
 }
 
 .speedometer {
     position:absolute;
     left: 30%;
-    top:50%;
+    top: 50%;
 }
 
 .power-gauge {
     position:absolute;
     right: 5%;
-    top:50%;
+    top: 50%;
+}
+
+.gif {
+    position:absolute;
+}
+
+#item-3 {
+    margin-top: 10%;
+}
+
+
+.efficiency{
+    height: 100px;
+    width: auto;
+}
+
+#item-4 {
+    margin-top: 15%;
+}
+
+.gear {
+    width: 275px;
+    height: 70px;
+}
+
+.regen-indicator {
+    position: absolute;
+    bottom: 3%;
+    left: 2%;
+    height: 60px;
 }

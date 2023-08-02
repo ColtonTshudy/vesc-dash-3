@@ -5,7 +5,7 @@
 }
 
 #mottemp_main>label {
+    font-family: San Francisco;
     text-align: left;
     overflow: hidden;
-    font-family: San Francisco;
 }

@@ -1,0 +1,29 @@
+#eff-main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#eff-value-box {
+    flex: 0 0 80%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#eff-value {
+    font-family: San Francisco;
+}
+
+#eff-seperator {
+    width: 100%;
+    flex: 0 0 2%;
+    background: linear-gradient(to right, black, white, black);
+}
+
+#eff-subtitle {
+    flex: 0 0 18%;
+    font-family: San Francisco;
+    width: 100%;
+    text-align: center;
+}

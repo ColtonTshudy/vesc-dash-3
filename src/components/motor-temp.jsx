@@ -2,7 +2,7 @@ import React from 'react'
 import './css/motor-temp.css'
 
 const MotorTemp = ({ className, value, height, width, warn }) => {
-    var fillColor = 'rgb(255,255,255,0.5)'
+    var fillColor = 'rgb(255,255,255,0.4)'
 
     if (value >= warn)
         fillColor = 'orange'
