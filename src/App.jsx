@@ -73,13 +73,13 @@ function App() {
                         <div id="item-4">
                             <Gear className='gear' duty={data.duty_cycle}/>
                         </div>
+                        {/* <NecoGif className='gif' speed={data.mph} max={config['max_speed']}/> */}
                     </div>
                 </div>
 
                 <Speedometer className='speedometer' value={data.mph} min={0} max={config['max_speed']} ticks={6} size={500} />
                 <PowerGauge className='power-gauge' value={power_in / 1000} min={0} max={10} ticks={6} size={500} />
-                {/* <NecoGif className='gif' speed={data.mph} max={config['max_speed']}/> */}
-
+                
                 <RegenIndicator className='regen-indicator' on={power_in<0}/>
 
             </div>

@@ -54,13 +54,11 @@ const NecoGif = ({ className, speed, max }) => {
     const [index, setIndex] = useState(0)
 
     useEffect(() => {
-        console.log('gif')
         timeoutID = setTimeout(() => {
             if (index >= images.length - 1)
                 setIndex(0)
             else
                 setIndex((old) => old + 1)
-            console.log(index)
         }, 200*(1.04-(Math.log10(Math.abs(speed+0.00001)/max)+1))
         )
     }, [index])
