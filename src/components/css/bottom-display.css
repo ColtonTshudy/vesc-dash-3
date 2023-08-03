@@ -1,0 +1,45 @@
+#bd-main {
+    border-radius: 20px;
+
+    color: black;
+    box-shadow: 0px 3px 10px 2px black,
+        inset 0 0 20px 5px black;
+    text-shadow: 1px 1px 4px black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Lcd Dots;
+    font-weight: normal;
+    font-style: normal;
+
+    background: linear-gradient(rgb(75, 87, 77) 12%, rgb(217, 243, 224) 30%) padding-box,
+        linear-gradient(to bottom, white, grey 5%, black 80%, transparent) border-box;
+    border: 5px solid transparent;
+}
+
+#bd-screen {
+    width: 85%;
+    height: 85%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.bd-row {
+    font-size: 35%;
+    line-height: 90%;
+
+    background:
+        linear-gradient(rgb(0, 0, 0, 0.05) 50%, transparent 50%) 0 0/4px 4px,
+        linear-gradient(to left, rgb(0, 0, 0, 0.05) 50%, transparent 50%) 0 0/4px 4px,
+        center/cover;
+
+    border-radius: 5px;
+    margin-top: 2%;
+}
+
+#bd-odometer {
+    text-align: right;
+}

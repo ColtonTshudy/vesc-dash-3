@@ -1,5 +1,4 @@
 import React from 'react'
-import './css/indicator.css'
 
 const RegenIndicator = ({ className, on }) => {
     let fillColor = 'rgb(255,255,255,0.1)'
@@ -9,7 +8,7 @@ const RegenIndicator = ({ className, on }) => {
 
     return (
         <div className={className}>
-            <svg fill={fillColor} height='100%'viewBox="0 0 512 512">
+            <svg fill={fillColor} height='100%' width='100%' viewBox="0 0 512 512">
                 <g>
                     <g>
                         <g>

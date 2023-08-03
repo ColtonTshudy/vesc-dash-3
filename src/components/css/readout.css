@@ -1,23 +1,24 @@
-#speedro-main {
+#ro-main {
     display: flex;
     justify-content: center;
     flex-direction: column;
     background-color: transparent;
 
     font-family: San Francisco;
+    line-height: 0px;
 }
 
-#speedro-speed-box {
+#ro-speed-box {
     flex: 0 0 50%;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    font-size: 42%;
+    font-size: 40%;
     font-weight: bolder;
 }
 
-#speedro-subtitle {
+#ro-subtitle {
     flex: 0 0 12%;
     display: flex;
     align-items: center;
@@ -27,13 +28,15 @@
     font-size: 10%;
 }
 
-#speedro-seperator {
+#ro-seperator {
     width: 100%;
-    flex: 0 0 2%;
+    flex: 0 0 1%;
     background: linear-gradient(to right, transparent, white, transparent);
+    margin-top: 4%;
+    margin-bottom: 2%;
 }
 
-.speedro-info {
+.ro-info {
     flex: 0 0 18%;
 
     display: flex;
@@ -42,20 +45,20 @@
 
     width: 100%;
 
-    font-size: 7%;
+    font-size: 13%;
     font-style: italic;
 }
 
-.speedro-info>label {
+.ro-info>label {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: lightgrey;
+    opacity: 0.6;
     margin-right: 10%;
-    font-size: 80%;
+    font-size: 70%;
 }
 
-.speedro-info>h1 {
+.ro-info>h1 {
     display: flex;
     align-items: center;
     justify-content: center;

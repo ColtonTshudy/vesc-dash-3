@@ -16,9 +16,12 @@ import Gear from './components/gear'
 import RegenIndicator from './components/regen-indicator'
 import SpeedReadout from './components/speed-readout'
 import PowerReadout from './components/power-readout'
+import BottomDisplay from './components/bottom-display'
 
 import Miku from './images/miku.png'
 import Trees from './images/winter_trees_snow_night_landscape_96069_1920x1080.jpg'
+
+const placeholder = 10
 
 function App() {
     const [data, setData] = useState({})
@@ -58,17 +61,22 @@ function App() {
         <div className="center-screen">
             <div className="viewport">
                 <img src={Trees} style={{ position: 'absolute', width: '100%', height: '100%', filter: 'brightness(1) blur(0px)' }} />
+                {/* <img src={Miku} style={{ position: 'absolute', width: '100%', height: '100%', filter: 'opacity(0.2) blur(1px)' }} /> */}
+
 
                 <div className='fullscreen-container'>
                     <div id='info-box'>
+
                         <div id="header-box">
                             <Clock className='clock' />
                             <Battery soc={soc} voltage={data.battery_voltage} width={140} height={35} charging={power_in < 0} />
                         </div>
+
                         <div id="temperature-box">
                             <MosfetTemp value={data.mot_temp} width={125} height={40} warn={config['warn_temp_mot']} />
                             <MotorTemp value={data.mos_temp} width={125} height={40} warn={config['warn_temp_mos']} />
                         </div>
+
                         <div id="item-3">
                             <div className="alert-zone"> </div>
                             <Efficiency className={'efficiency'} value={efficiency} />
@@ -76,9 +84,13 @@ function App() {
                                 <RegenIndicator className='regen-indicator' on={power_in < 0} />
                             </div>
                         </div>
+                        
                         <div id="item-4">
                             <Gear className='gear' duty={data.duty_cycle} />
                         </div>
+
+                        <BottomDisplay className='bottom-display' odo={data.odometer} range={placeholder} />
+
                         {/* <NecoGif className='gif' speed={data.mph} max={config['max_speed']}/> */}
                     </div>
                 </div>
@@ -90,12 +102,9 @@ function App() {
 
                 <div className='fullscreen-container'>
                     <div id='readout-container'>
-                        <div className="readout-box">
-                            <SpeedReadout className="speed-readout" velocity={data.mph} topSpeed={50} avgSpeed={50} />
-                        </div>
-                        <div className="readout-box">
-                            <PowerReadout className="power-readout" power={power_in} />
-                        </div>
+                        <SpeedReadout className="readout" velocity={data.mph} topSpeed={placeholder} avgSpeed={placeholder} />
+                        <div className="readout-spacer"/>
+                        <PowerReadout className="readout" power={power_in/1000} topPower={placeholder} avgPower={placeholder}/>
                     </div>
                 </div>
 

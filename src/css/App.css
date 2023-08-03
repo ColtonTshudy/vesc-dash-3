@@ -11,8 +11,8 @@ body {
 .viewport {
     width: 1024px;
     height: 600px;
-    /* width: 800px; */
-    /* height: 480px; */
+    /* width: 800px;
+    height: 480px; */
     color: white;
     background: white;
     overflow: hidden;
@@ -53,7 +53,7 @@ body {
     z-index: 100;
     background: black;
 
-    min-width: 27%;
+    width: 27%;
 }
 
 #header-box {
@@ -116,7 +116,7 @@ body {
 }
 
 .regen-indicator {
-    height: 50%;
+    height: 40%;
 }
 
 #item-4 {
@@ -128,34 +128,32 @@ body {
     height: 70px;
 }
 
+.bottom-display {
+    margin-top: 20%;
+    height: 21%;
+    width: 80%;
+}
+
 .gauges {
     backdrop-filter: blur(15px);
     border-radius: 50%;
-    background-color: rgb(0, 0, 0, 0.5);
-    box-shadow: 5px 5px 10px 10px rgb(0, 0, 0, 0.5);
+    background-color: rgb(0, 0, 0, 0.4);
 }
 
 #readout-container {
-    margin-top: 25%;
+    margin-top: 20%;
     height: 150px;
-    width: 59%;
+    width: 55%;
     display: flex;
     align-items: top;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
-.readout-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 150px;
-}
-
-.speed-readout {
+.readout {
     height: 200px;
+    width: 100px;
 }
 
-.power-readout {
-    height: 150px;
+.readout-spacer{
+    flex: 0 0 60%;
 }

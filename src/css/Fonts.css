@@ -1,25 +1,33 @@
 @font-face {
-  font-family: "led_counter-7";
+  font-family: "Lcd Dots";
   src: local("led_counter-7"),
     url("../fonts/led_counter-7/led_counter-7.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
   font-family: "Rubik";
   src: local("Rubik"),
     url("../fonts/Rubik/static/Rubik-MediumItalic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
 }
 
 @font-face {
   font-family: "Horizon";
   src: local("Horizon"),
     url("../fonts/dash-horizon-font/Dashhorizon-eZ5wg.otf") format("opentype");
+  font-weight: normal;
+  font-style: italic;
 }
 
 @font-face {
   font-family: "Seven_Segment";
   src: local("Seven_Segment"),
     url("../fonts/fonts-DSEG_v046/DSEG14-Modern/DSEG14Modern-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
 }
 
 @font-face {
@@ -68,4 +76,12 @@
     url("../fonts/San Francisco Mono/SFMono-Heavy.otf") format("opentype");
   font-weight: bold;
   font-style: normal;
+}
+
+@font-face {
+  font-family: "test";
+  src: local("test"),
+    url("../fonts/lcd-dot/bold_led_board-7.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
 }
