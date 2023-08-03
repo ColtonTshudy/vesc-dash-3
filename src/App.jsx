@@ -24,8 +24,8 @@ import Trees from './images/winter_trees_snow_night_landscape_96069_1920x1080.jp
 const placeholder = 'XX'
 
 function App() {
-    const [data, setData] = useState({})
-    const [config, setConfig] = useState({})
+    const [data, setData] = useState({}) //Default data values
+    const [config, setConfig] = useState({max_speed: 5, max_power: 5}) //Default config values
 
     useEffect(() => {
         const socket = new Socket(5002)
@@ -42,7 +42,8 @@ function App() {
                 'max_amps_bat': config['battery']['max_amps'],
                 'max_amps_mot': config['motor']['max_amps'],
                 'warn_temp_mot': config['motor']['warn_temp'],
-                'warn_temp_mos': config['controller']['warn_temp'],
+                'warn_temp_mos': config['controller']['warn_temp'], 
+                'max_power': config['controller']['max_power_kw'],
             })
             console.log(config)
         })
