@@ -21,7 +21,7 @@ import BottomDisplay from './components/bottom-display'
 import Miku from './images/miku.png'
 import Trees from './images/winter_trees_snow_night_landscape_96069_1920x1080.jpg'
 
-const placeholder = 10
+const placeholder = 'XX'
 
 function App() {
     const [data, setData] = useState({})

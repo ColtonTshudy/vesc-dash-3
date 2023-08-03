@@ -22,11 +22,11 @@ const SpeedReadout = ({ className, velocity, topSpeed, avgSpeed }) => {
             </label>
             <div id="ro-seperator" />
             <div className="ro-info">
-                <label>top:</label>
+                <label>top</label>
                 <h1>{topSpeed}</h1>
             </div>
             <div className="ro-info">
-                <label>avg:</label>
+                <label>avg</label>
                 <h1>{avgSpeed}</h1>
             </div>
         </div >
