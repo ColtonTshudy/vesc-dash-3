@@ -61,8 +61,6 @@ function App() {
         <div className="center-screen">
             <div className="viewport">
                 <img src={Trees} style={{ position: 'absolute', width: '100%', height: '100%', filter: 'brightness(1) blur(0px)' }} />
-                {/* <img src={Miku} style={{ position: 'absolute', width: '100%', height: '100%', filter: 'opacity(0.2) blur(1px)' }} /> */}
-
 
                 <div className='fullscreen-container'>
                     <div id='info-box'>
@@ -108,7 +106,6 @@ function App() {
                 </div>
 
             </div>
-            {/* <Probe></Probe> */}
         </div>
     )
 }

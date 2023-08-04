@@ -9,7 +9,7 @@ const Speedometer = ({ className, value = 0, min = 0, max = 0, ticks = 0 }) => {
     useEffect(() => {
         const size = divRef.current.clientHeight;
 
-        gaugeRef.current = new RadialGauge({
+        const options = {
             barStartPosition: 'left',
             renderTo: canvasRef.current,
             width: size,
@@ -46,17 +46,19 @@ const Speedometer = ({ className, value = 0, min = 0, max = 0, ticks = 0 }) => {
             colorNeedleCircleOuterEnd: 'black',
             colorMajorTicks: 'white',
             colorMinorTicks: 'lightgrey',
-            colorNumbers: 'white',  
+            colorNumbers: 'white',
             colorBorderInner: 'transparent',
             colorBorderOuter: 'transparent',
             colorBorderMiddle: 'transparent',
-        }, []);
-        gaugeRef.current.draw();
+            dataAnimatedValue: false,
+        }
+
+        gaugeRef.current = new RadialGauge(options).draw();
 
         return () => {
-            gaugeRef.current = null
-        }
-    });
+            gaugeRef.current.destroy();
+        };
+    }, [value]);
 
     return (
         <div className={className} ref={divRef}>

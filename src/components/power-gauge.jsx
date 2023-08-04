@@ -3,17 +3,15 @@ import { RadialGauge } from 'canvas-gauges';
 
 const PowerGauge = ({ className, value = 0, min = 0, max = 0, ticks = 0, size }) => {
     const canvasRef = useRef();
-    const gaugeRef = useRef();
     const divRef = useRef();
+    const gaugeRef = useRef();
 
     useEffect(() => {
-        const size = divRef.current.clientHeight
-
-        gaugeRef.current = new RadialGauge({
+        const options = {
             barStartPosition: 'right',
             renderTo: canvasRef.current,
-            width: size,
-            height: size,
+            width: divRef.current.clientHeight,
+            height: divRef.current.clientHeight,
             minValue: min,
             maxValue: max,
             value: Math.abs(value),
@@ -50,12 +48,14 @@ const PowerGauge = ({ className, value = 0, min = 0, max = 0, ticks = 0, size })
             colorBorderInner: 'transparent',
             colorBorderOuter: 'transparent',
             colorBorderMiddle: 'transparent',
-        });
-        gaugeRef.current.draw();
+            dataAnimatedValue: true,
+        }
+
+        gaugeRef.current = new RadialGauge(options).draw();
 
         return () => {
-            gaugeRef.current = null
-        }
+            gaugeRef.current.destroy();
+        };
     });
 
     return (
