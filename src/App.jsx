@@ -10,7 +10,6 @@ import MosfetTemp from './components/mosfet-temp'
 import Clock from './components/clock'
 import Speedometer from './components/speedometer'
 import PowerGauge from './components/power-gauge'
-import NecoGif from './components/neco-gif'
 import Efficiency from './components/efficiency'
 import Gear from './components/gear'
 import RegenIndicator from './components/regen-indicator'
@@ -92,7 +91,6 @@ function App() {
 
                         <BottomDisplay className='bottom-display' odo={data.odometer} range={placeholder} />
 
-                        {/* <NecoGif className='gif' speed={data.mph} max={config['max_speed']}/> */}
                     </div>
                 </div>
 
