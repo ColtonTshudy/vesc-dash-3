@@ -1,5 +1,6 @@
 import './css/battery.css';
 import '../css/Fonts.css'
+import padZeros from './pad-zeros-func'
 
 const Battery = ({ className, soc, voltage, width, height, charging }) => {
     // constants
@@ -60,22 +61,5 @@ const Battery = ({ className, soc, voltage, width, height, charging }) => {
         </div>
     )
 };
-
-const drawBattery = () => {
-
-}
-
-// Create a string from a number with a set amount of decimal places
-const padZeros = (decimals, value) => {
-    const decimal_mp = Math.pow(10, decimals);
-    value = Math.round(value * decimal_mp) / decimal_mp
-
-    if (decimals === 0)
-        return String(value)
-
-    const [front, rear] = String(value).split('.')
-    let output = rear !== undefined ? front + '.' + rear : front + '.'
-    return output.padEnd(front.length + 1 + decimals, '0')
-}
 
 export default Battery;

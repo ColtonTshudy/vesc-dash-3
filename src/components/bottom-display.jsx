@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import './css/bottom-display.css'
+import padZeros from './pad-zeros-func'
 
 const BottomDisplay = ({ className, odo, range }) => {
     const [height, setHeight] = useState()
@@ -15,10 +16,10 @@ const BottomDisplay = ({ className, odo, range }) => {
         }}>
             <div id="bd-screen" ref={ref}>
                 <div className="bd-row bd-grid-bg">
-                    <label>{padZeros(0, range)} Miles</label>
+                    <label>{padZeros(0, range)} MILES</label>
                 </div>
                 <div className="bd-row bd-grid-bg">
-                    <label>Remaining</label>
+                    <label>TO EMPTY</label>
                 </div>
                 <div className="bd-row bd-grid-bg" id="bd-odometer">
                     <label>{padZeros(2, odo)}</label>
@@ -26,22 +27,6 @@ const BottomDisplay = ({ className, odo, range }) => {
             </div>
         </div>
     );
-}
-
-//create a string from a number with a set amount of decimal places
-const padZeros = (decimals, value) => {
-    if (isNaN(value))
-        return '0';
-
-    const decimal_mp = Math.pow(10, decimals);
-    value = Math.round(value * decimal_mp) / decimal_mp
-
-    if (decimals === 0)
-        return String(value)
-
-    const [front, rear] = String(value).split('.')
-    let output = rear !== undefined ? front + '.' + rear : front + '.'
-    return output.padEnd(front.length + 1 + decimals, '0')
 }
 
 export default BottomDisplay
