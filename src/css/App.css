@@ -138,6 +138,7 @@ body {
 
 .gauges {
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border-radius: 50%;
     background-color: rgb(0, 0, 0, 0.4);
 }
