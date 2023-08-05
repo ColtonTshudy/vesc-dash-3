@@ -32,7 +32,7 @@
     line-height: 80%;
 
     background:
-        radial-gradient(rgb(0, 0, 0, 0.1) 50%, transparent 50%) 0 0/4px 4px,
+        radial-gradient(rgb(0, 0, 0, 0.1) 50%, transparent 50%) 0 0/5px 5px,
         center/cover;
 
     border-radius: 5px;
