@@ -3,7 +3,7 @@ import './css/mosfet-temp.css'
 import padZeros from './pad-zeros-func'
 
 const MosfetTemp = ({ className, value, height, width, warn }) => {
-    var fillColor = 'rgb(255,255,255,0.4)'
+    var fillColor = 'grey'
 
     if (value >= warn)
         fillColor = 'orange'

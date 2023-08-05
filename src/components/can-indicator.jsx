@@ -4,22 +4,23 @@ const expected_ids = 5;
 
 const RegenIndicator = ({ className, recv_ids = {} }) => {
     let fillColor = 'rgb(255,255,255,0.05)'
+    let notif = ""
 
     // console.log(recv_ids.length)
 
-    if (recv_ids.length < expected_ids)
+    if (recv_ids.length === undefined) {
+        fillColor = 'red'
+    }
+    else if (recv_ids.length < expected_ids) {
         fillColor = 'orange'
+        notif = expected_ids - recv_ids.length
+    }
 
     return (
         <div className={className}>
             <svg fill={fillColor} height='100%' width='100%' viewBox="0 0 64 64">
                 <path
-                    d="M 48.26,0.00
-                    C 41.35,0.00 35.76,5.60 35.76,12.50
-                        35.76,19.40 41.35,25.00 48.26,25.00
-                        55.16,25.00 60.76,19.40 60.76,12.50
-                        60.76,5.60 55.16,0.00 48.26,0.00 Z
-                    M 31.94,25.45
+                    d="M 31.94,25.45
                     C 31.94,25.45 31.94,36.27 31.94,36.27
                         31.94,36.27 34.18,36.27 34.18,36.27
                         34.18,36.27 34.18,25.45 34.18,25.45
@@ -70,8 +71,13 @@ const RegenIndicator = ({ className, recv_ids = {} }) => {
                         43.06,25.00 43.06,15.00 43.06,15.00
                         43.06,12.24 40.82,10.00 38.06,10.00
                         38.06,10.00 28.06,10.00 28.06,10.00 Z" />
+                <path opacity={notif === "" ? 0 : 1} d="M 48.26,0.00
+                    C 41.35,0.00 35.76,5.60 35.76,12.50
+                        35.76,19.40 41.35,25.00 48.26,25.00
+                        55.16,25.00 60.76,19.40 60.76,12.50
+                        60.76,5.60 55.16,0.00 48.26,0.00 Z" />
                 <text x={42} y={20} fill='black' >
-                    {expected_ids - recv_ids.length}
+                    {notif}
                 </text>
             </svg>
         </div>

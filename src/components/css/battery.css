@@ -5,7 +5,7 @@
 }
 
 #battery-body {
-    border: solid 2px white;
+    border: solid 2px var(--fg);
     height: 100%;
     display: flex;
     max-width: calc(100% - 14px);
@@ -13,7 +13,7 @@
 
 #battery-nub {
     height: 40%;
-    background: white;
+    background: var(--fg);
 }
 
 #battery-fill {

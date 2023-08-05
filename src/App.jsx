@@ -50,7 +50,6 @@ function App() {
         
         socket.getSocket().on('disconnect', () => {
             setData({})
-            
         })
 
         return () => {

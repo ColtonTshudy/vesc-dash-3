@@ -3,6 +3,11 @@
  * version: 07/31/2023
  */
 
+:root {
+    --fg: white;
+    --bg: black;
+}
+
 body {
     background: white;
     margin: 0px;
@@ -13,8 +18,8 @@ body {
     height: 600px;
     /* width: 800px;
     height: 480px; */
-    color: white;
-    background: white;
+    color: var(--fg);
+    background: var(--bg);
     overflow: hidden;
     position: relative;
     z-index: -10;
@@ -42,7 +47,7 @@ body {
     flex-direction: column;
     align-items: center;
 
-    border: solid 1px white;
+    border: solid 1px var(--fg);
     padding: 10px;
 
     height: 90%;
@@ -51,7 +56,7 @@ body {
     border-radius: 10px;
 
     z-index: 100;
-    background: black;
+    background: var(--bg);
 
     width: 27%;
 }

@@ -2,7 +2,9 @@ import './css/battery.css';
 import '../css/Fonts.css'
 import padZeros from './pad-zeros-func'
 
-const Battery = ({ className, soc, voltage, width, height, charging }) => {
+
+
+const Battery = ({ className, soc, voltage, width, height, charging, dark }) => {
     // constants
     const fontHeight = Math.min(width * 0.2, height * 0.8);
     const borderRadius = Math.min(width, height) * 0.2;
@@ -10,7 +12,7 @@ const Battery = ({ className, soc, voltage, width, height, charging }) => {
     const svgSize = Math.min(width*.3, height)
 
     //input conditioning
-    const soc_per = isNaN(soc) ? 0 : 100 * soc;;
+    const soc_per = isNaN(soc) ? 0 : 100 * soc
     const voltage_trunc = isNaN(voltage) ? 0 : padZeros(1, voltage)
 
     //colors
