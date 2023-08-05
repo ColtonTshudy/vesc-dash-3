@@ -115,8 +115,9 @@ body {
     flex-direction: column;
 }
 
-.regen-indicator {
-    height: 40%;
+.indicator {
+    margin:10%;
+    font: 800 22px San Francisco;
 }
 
 #item-4 {

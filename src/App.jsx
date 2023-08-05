@@ -16,6 +16,7 @@ import RegenIndicator from './components/regen-indicator'
 import SpeedReadout from './components/speed-readout'
 import PowerReadout from './components/power-readout'
 import BottomDisplay from './components/bottom-display'
+import CanIndicator from './components/can-indicator'
 
 import Miku from './images/miku.png'
 import Trees from './images/winter_trees_snow_night_landscape_96069_1920x1080.jpg'
@@ -45,6 +46,11 @@ function App() {
                 'max_power': config['controller']['max_power_kw'],
             })
             console.log(config)
+        })
+        
+        socket.getSocket().on('disconnect', () => {
+            setData({})
+            
         })
 
         return () => {
@@ -79,7 +85,8 @@ function App() {
                             <div className="alert-zone"> </div>
                             <Efficiency className={'efficiency'} value={efficiency} />
                             <div className="alert-zone">
-                                <RegenIndicator className='regen-indicator' on={power_in < 0} />
+                                <RegenIndicator className='indicator' on={power_in < 0} />
+                                <CanIndicator className='indicator' recv_ids={data.ids} />
                             </div>
                         </div>
                         
@@ -104,7 +111,7 @@ function App() {
                         <PowerReadout className="readout" power={power_in/1000} topPower={placeholder} avgPower={placeholder}/>
                     </div>
                 </div>
-
+                {/* <Probe /> */}
             </div>
         </div>
     )
