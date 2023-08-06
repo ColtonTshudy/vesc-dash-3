@@ -40,7 +40,7 @@ function App() {
         })
 
         socket.getSocket().on('config', (config) => {
-            setConfig({
+            const internal_config = {
                 'capacity_ah': config['battery']['capacity_ah'],
                 'max_speed': config['dash']['max_speed'],
                 'max_rpm': config['motor']['max_rpm'],
@@ -49,8 +49,10 @@ function App() {
                 'warn_temp_mot': config['motor']['warn_temp'],
                 'warn_temp_mos': config['controller']['warn_temp'],
                 'max_power': config['controller']['max_power_kw'],
-            })
+            }
+            setConfig({ ...internal_config })
             console.log(config)
+            console.log(internal_config)
         })
 
         socket.getSocket().on('disconnect', () => {
@@ -107,8 +109,8 @@ function App() {
                 </div>
 
                 <div className='fullscreen-container'>
-                    <Speedometer className='speedometer gauges' value={data.mph} min={0} max={config['max_speed']}/>
-                    <PowerGauge className='power-gauge gauges' value={power_in / 1000} min={0} max={config['max_power']}/>
+                    <Speedometer className='gauges' value={data.mph} min={0} max={config['max_speed']}/>
+                    <PowerGauge className='gauges' value={power_in / 1000} min={0} max={config['max_power']}/>
                 </div>
 
                 <div className='fullscreen-container'>

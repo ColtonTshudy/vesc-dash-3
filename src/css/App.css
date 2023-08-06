@@ -83,16 +83,6 @@ body {
     width: 100%
 }
 
-.speedometer {
-    height: 85%;
-    margin: -5%;
-}
-
-.power-gauge {
-    height: 85%;
-    margin: -5%;
-}
-
 .gif {
     margin: 5%;
 }
@@ -143,6 +133,9 @@ body {
 }
 
 .gauges {
+    height: 85%;
+    margin: -5%;
+    
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border-radius: 50%;

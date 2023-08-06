@@ -9,8 +9,6 @@ const PowerGauge = ({ className, value = 0, min = 0, max = 5}) => {
 
     useEffect(() => {
         const options = {
-            fontNumbers: "Nasalization",
-            barStartPosition: "right",
             renderTo: canvasRef.current,
             width: divRef.current.clientHeight,
             height: divRef.current.clientHeight,
@@ -27,8 +25,9 @@ const PowerGauge = ({ className, value = 0, min = 0, max = 5}) => {
             colorNeedle: "rgb(200,200,255,1)",
             needleStart: 0,
             needleEnd: 100,
+            fontNumbers: "Nasalization",
+            barStartPosition: "right",
             colorPlate: 'transparent',
-            fontValueSize: 60,
             fontNumbersSize: 25,
             valueInt: 2,
             valueDec: 0,
@@ -37,20 +36,24 @@ const PowerGauge = ({ className, value = 0, min = 0, max = 5}) => {
             ticksAngle: 135,
             startAngle: 180,
             valueBox: false,
-            borders: true,
             borderShadowWidth: 0,
-            exactTicks: false,
-            needleCircleSize: 0,
-            needleCircleInner: 0,
-            colorNeedleCircleOuter: 'black',
-            colorNeedleCircleOuterEnd: 'black',
+            colorNeedleCircleOuter: 'transparent',
+            colorNeedleCircleInner: 'transparent',
+            colorNeedleCircleOuterEnd: 'transparent',
+            colorNeedleCircleInnerEnd: 'transparent',
             colorMajorTicks: 'white',
             colorMinorTicks: 'lightgrey',
             colorNumbers: 'white',
-            colorBorderInner: 'transparent',
-            colorBorderOuter: 'transparent',
-            colorBorderMiddle: 'transparent',
-            dataAnimatedValue: true,
+            borders: true,
+            colorBorderInner: "transparent",
+            colorBorderMiddle: "transparent",
+            colorBorderOuter: "transparent",
+            colorBorderInnerEnd: "transparent",
+            colorBorderMiddleEnd: "transparent",
+            colorBorderOuterEnd: "transparent",
+            animation: true,
+            animationRule: 'linear',
+            animationDuration: 100,
         }
 
         gaugeRef.current = new RadialGauge(options).draw();
@@ -59,7 +62,11 @@ const PowerGauge = ({ className, value = 0, min = 0, max = 5}) => {
         return () => {
             gaugeRef.current.destroy();
         };
-    });
+    }, [min, max]);
+
+    useEffect(() => {
+        gaugeRef.current.value = Math.abs(value)
+    }, [value])
 
     return (
         <div className={className} ref={divRef}>

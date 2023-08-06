@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { RadialGauge } from 'canvas-gauges';
 import './css/gauges.css'
+import '../css/fonts.css'
 
 const Speedometer = ({ className, value = 0, min = 0, max = 5}) => {
     const canvasRef = useRef();
@@ -11,14 +12,12 @@ const Speedometer = ({ className, value = 0, min = 0, max = 5}) => {
         const size = divRef.current.clientHeight;
 
         const options = {
-            fontNumbers: "Nasalization",
-            barStartPosition: "left",
             renderTo: canvasRef.current,
             width: size,
             height: size,
             minValue: min,
             maxValue: max,
-            value: Math.abs(value),
+            value: min,
             highlights: [],
             majorTicks: __linspace(min, max, 6),
             minorTicks: 5,
@@ -29,8 +28,9 @@ const Speedometer = ({ className, value = 0, min = 0, max = 5}) => {
             colorNeedle: "rgb(255,200,200,1)",
             needleStart: 0,
             needleEnd: 100,
-            colorPlate: 'transparent',
-            fontValueSize: 60,
+            fontNumbers: "Nasalization",
+            barStartPosition: "left",
+            colorPlate: "transparent",
             fontNumbersSize: 25,
             valueInt: 2,
             valueDec: 0,
@@ -41,26 +41,39 @@ const Speedometer = ({ className, value = 0, min = 0, max = 5}) => {
             valueBox: false,
             borders: true,
             borderShadowWidth: 0,
-            exactTicks: false,
-            needleCircleSize: 0,
-            needleCircleInner: 0,
-            colorNeedleCircleOuter: 'black',
-            colorNeedleCircleOuterEnd: 'black',
+            colorNeedleCircleOuter: "transparent",
+            colorNeedleCircleInner: "transparent",
+            colorNeedleCircleOuterEnd: "transparent",
+            colorNeedleCircleInnerEnd: "transparent",
             colorMajorTicks: 'white',
             colorMinorTicks: 'lightgrey',
             colorNumbers: 'white',
-            colorBorderInner: 'transparent',
-            colorBorderOuter: 'transparent',
-            colorBorderMiddle: 'transparent',
-            dataAnimatedValue: false,
+            colorBorderInner: "transparent",
+            colorBorderMiddle: "transparent",
+            colorBorderOuter: "transparent",
+            colorBorderInnerEnd: "transparent",
+            colorBorderMiddleEnd: "transparent",
+            colorBorderOuterEnd: "transparent",
+            animation: true,
+            animationRule: 'linear',
+            animationDuration: 100,
+            // barProgress: true,
+            // barStrokeWidth: 0,
+            // barWidth: 5,
+            // colorBar: "transparent",
+            // colorBarProgress: "red",
+            // needle: false,
         }
-
         gaugeRef.current = new RadialGauge(options).draw();
-
+        
         return () => {
             gaugeRef.current.destroy();
         };
-    }, [value]);
+    }, [min, max]);
+
+    useEffect(() => {
+        gaugeRef.current.value = Math.abs(value)
+    }, [value])
 
     return (
         <div className={className} ref={divRef}>
