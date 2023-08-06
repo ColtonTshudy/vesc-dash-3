@@ -2,14 +2,17 @@ import React from 'react'
 
 const expected_ids = 5;
 
-const RegenIndicator = ({ className, recv_ids = {} }) => {
+const RegenIndicator = ({ className, recv_ids = {}, connected }) => {
     let fillColor = 'rgb(255,255,255,0.05)'
     let notif = ""
 
     // console.log(recv_ids.length)
 
-    if (recv_ids.length === undefined) {
+    if (!connected) {
         fillColor = 'red'
+    }
+    else if (recv_ids.length === undefined) {
+        fillColor = 'orange'
     }
     else if (recv_ids.length < expected_ids) {
         fillColor = 'orange'

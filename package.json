@@ -1,16 +1,21 @@
 {
   "name": "vesc-dash-3",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "version": "3.0.0",
+  "description": "vesc dash frontend react app",
+  "main": "electron.jsx",
+  "author": "Colton Tshudy",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "e": "electron .",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
     "canvas-gauges": "^2.1.7",
+    "electron": "^25.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.64.2",

@@ -16,7 +16,8 @@ import RegenIndicator from './components/regen-indicator'
 import SpeedReadout from './components/speed-readout'
 import PowerReadout from './components/power-readout'
 import BottomDisplay from './components/bottom-display'
-import CanIndicator from './components/can-indicator'
+import CanIndicator from './components/connection-indicator'
+import DatabaseIndicator from './components/db-indicator'
 
 import Miku from './images/miku.png'
 import Trees from './images/winter_trees_snow_night_landscape_96069_1920x1080.jpg'
@@ -25,10 +26,14 @@ const placeholder = 'XX'
 
 function App() {
     const [data, setData] = useState({}) //Default data values
-    const [config, setConfig] = useState({max_speed: 5, max_power: 5}) //Default config values
+    const [config, setConfig] = useState({ max_speed: 5, max_power: 5 }) //Default config values
+    const [socketConn, setSocketConn] = useState(false)
+    const [dbConn, setDbConn] = useState(false)
 
     useEffect(() => {
         const socket = new Socket(5002)
+
+        socket.getSocket().on('connect', () => setSocketConn(true))
 
         socket.getSocket().on('data', (data) => {
             setData(data)
@@ -42,14 +47,15 @@ function App() {
                 'max_amps_bat': config['battery']['max_amps'],
                 'max_amps_mot': config['motor']['max_amps'],
                 'warn_temp_mot': config['motor']['warn_temp'],
-                'warn_temp_mos': config['controller']['warn_temp'], 
+                'warn_temp_mos': config['controller']['warn_temp'],
                 'max_power': config['controller']['max_power_kw'],
             })
             console.log(config)
         })
-        
+
         socket.getSocket().on('disconnect', () => {
             setData({})
+            setSocketConn(false)
         })
 
         return () => {
@@ -81,14 +87,16 @@ function App() {
                         </div>
 
                         <div id="item-3">
-                            <div className="alert-zone"> </div>
+                            <div className="alert-zone">
+                                <CanIndicator className='indicator' recv_ids={data.ids} connected={socketConn} />
+                                <DatabaseIndicator className='indicator' connected={dbConn} />
+                            </div>
                             <Efficiency className={'efficiency'} value={efficiency} />
                             <div className="alert-zone">
                                 <RegenIndicator className='indicator' on={power_in < 0} />
-                                <CanIndicator className='indicator' recv_ids={data.ids} />
                             </div>
                         </div>
-                        
+
                         <div id="item-4">
                             <Gear className='gear' duty={data.duty_cycle} />
                         </div>
@@ -106,8 +114,8 @@ function App() {
                 <div className='fullscreen-container'>
                     <div id='readout-container'>
                         <SpeedReadout className="readout" velocity={data.mph} topSpeed={placeholder} avgSpeed={placeholder} />
-                        <div className="readout-spacer"/>
-                        <PowerReadout className="readout" power={power_in/1000} topPower={placeholder} avgPower={placeholder}/>
+                        <div className="readout-spacer" />
+                        <PowerReadout className="readout" power={power_in / 1000} topPower={placeholder} avgPower={placeholder} />
                     </div>
                 </div>
                 {/* <Probe /> */}

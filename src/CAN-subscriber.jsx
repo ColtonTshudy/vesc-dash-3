@@ -29,10 +29,10 @@ class Socket {
         // Retry connection upon disconnect
         this.socket.on('connect', () => {
             this.subscribeToCAN()
-            console.log('connected')
+            // console.log('connected')
         })
         this.socket.on('disconnect', () => {
-            console.log('disconnected')
+            // console.log('disconnected')
         })
     }
 
