@@ -12,12 +12,12 @@ import Speedometer from './components/speedometer'
 import PowerGauge from './components/power-gauge'
 import Efficiency from './components/efficiency'
 import Gear from './components/gear'
-import RegenIndicator from './components/regen-indicator'
+import RegenIndicator from './components/indicator-regen'
 import SpeedReadout from './components/speed-readout'
 import PowerReadout from './components/power-readout'
 import BottomDisplay from './components/bottom-display'
-import CanIndicator from './components/connection-indicator'
-import DatabaseIndicator from './components/db-indicator'
+import CanIndicator from './components/indicator-canbus'
+import DatabaseIndicator from './components/indicator-db'
 
 import Miku from './images/miku.png'
 import Trees from './images/winter_trees_snow_night_landscape_96069_1920x1080.jpg'
@@ -26,7 +26,7 @@ const placeholder = 'XX'
 
 function App() {
     const [data, setData] = useState({}) //Default data values
-    const [config, setConfig] = useState({ max_speed: 5, max_power: 5 }) //Default config values
+    const [config, setConfig] = useState({}) //Default config values
     const [socketConn, setSocketConn] = useState(false)
     const [dbConn, setDbConn] = useState(false)
 
@@ -107,8 +107,8 @@ function App() {
                 </div>
 
                 <div className='fullscreen-container'>
-                    <Speedometer className='speedometer gauges' value={data.mph} min={0} max={config['max_speed']} ticks={6} size={500} />
-                    <PowerGauge className='power-gauge gauges' value={power_in / 1000} min={0} max={10} ticks={6} size={500} />
+                    <Speedometer className='speedometer gauges' value={data.mph} min={0} max={config['max_speed']}/>
+                    <PowerGauge className='power-gauge gauges' value={power_in / 1000} min={0} max={config['max_power']}/>
                 </div>
 
                 <div className='fullscreen-container'>

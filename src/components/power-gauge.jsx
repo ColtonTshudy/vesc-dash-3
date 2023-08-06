@@ -2,14 +2,15 @@ import React, { useRef, useEffect } from 'react';
 import { RadialGauge } from 'canvas-gauges';
 import './css/gauges.css'
 
-const PowerGauge = ({ className, value = 0, min = 0, max = 0, ticks = 0, size }) => {
+const PowerGauge = ({ className, value = 0, min = 0, max = 5}) => {
     const canvasRef = useRef();
     const divRef = useRef();
     const gaugeRef = useRef();
 
     useEffect(() => {
         const options = {
-            barStartPosition: 'right',
+            fontNumbers: "Nasalization",
+            barStartPosition: "right",
             renderTo: canvasRef.current,
             width: divRef.current.clientHeight,
             height: divRef.current.clientHeight,
@@ -17,7 +18,7 @@ const PowerGauge = ({ className, value = 0, min = 0, max = 0, ticks = 0, size })
             maxValue: max,
             value: Math.abs(value),
             highlights: [],
-            majorTicks: __linspace(max, min, ticks),
+            majorTicks: __linspace(max, min, 6),
             minorTicks: 5,
             needleType: "line",
             needleWidth: 3,
@@ -53,6 +54,7 @@ const PowerGauge = ({ className, value = 0, min = 0, max = 0, ticks = 0, size })
         }
 
         gaugeRef.current = new RadialGauge(options).draw();
+        gaugeRef.current.update()
 
         return () => {
             gaugeRef.current.destroy();
@@ -66,10 +68,10 @@ const PowerGauge = ({ className, value = 0, min = 0, max = 0, ticks = 0, size })
     )
 };
 
-function __linspace(startValue, stopValue, cardinality) {
+function __linspace(startValue, stopValue, count) {
     var arr = [];
-    var step = (stopValue - startValue) / (cardinality - 1);
-    for (var i = 0; i < cardinality; i++) {
+    var step = (stopValue - startValue) / (count - 1);
+    for (var i = 0; i < count; i++) {
         arr.push(startValue + (step * i));
     }
     return arr;

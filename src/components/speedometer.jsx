@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { RadialGauge } from 'canvas-gauges';
 import './css/gauges.css'
 
-const Speedometer = ({ className, value = 0, min = 0, max = 0, ticks = 0 }) => {
+const Speedometer = ({ className, value = 0, min = 0, max = 5}) => {
     const canvasRef = useRef();
     const gaugeRef = useRef();
     const divRef = useRef();
@@ -11,7 +11,8 @@ const Speedometer = ({ className, value = 0, min = 0, max = 0, ticks = 0 }) => {
         const size = divRef.current.clientHeight;
 
         const options = {
-            barStartPosition: 'left',
+            fontNumbers: "Nasalization",
+            barStartPosition: "left",
             renderTo: canvasRef.current,
             width: size,
             height: size,
@@ -19,7 +20,7 @@ const Speedometer = ({ className, value = 0, min = 0, max = 0, ticks = 0 }) => {
             maxValue: max,
             value: Math.abs(value),
             highlights: [],
-            majorTicks: __linspace(min, max, ticks),
+            majorTicks: __linspace(min, max, 6),
             minorTicks: 5,
             needleType: "line",
             needleWidth: 3,
@@ -68,10 +69,10 @@ const Speedometer = ({ className, value = 0, min = 0, max = 0, ticks = 0 }) => {
     )
 };
 
-function __linspace(startValue, stopValue, cardinality) {
+function __linspace(startValue, stopValue, count) {
     var arr = [];
-    var step = (stopValue - startValue) / (cardinality - 1);
-    for (var i = 0; i < cardinality; i++) {
+    var step = (stopValue - startValue) / (count - 1);
+    for (var i = 0; i < count; i++) {
         arr.push(startValue + (step * i));
     }
     return arr;

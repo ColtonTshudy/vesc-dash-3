@@ -8,13 +8,14 @@ function createWindow() {
     // Create the browser window.
     mainWindow = new BrowserWindow({
         width: 1024,
-        height: 600,
+        height: 800,
         webPreferences: { nodeIntegration: true, contextIsolation: false },
-        kiosk: true,
-        frame: false,
+        kiosk: false,
+        frame: true,
     });
     // and load the index.html of the app.
     console.log(__dirname);
+    console.log(app.getPath('appData'));
     mainWindow.loadFile(path.join(__dirname, "./dist/index.html"));
 }
 

@@ -1,8 +1,5 @@
 import './css/battery.css';
-import '../css/Fonts.css'
 import padZeros from './pad-zeros-func'
-
-
 
 const Battery = ({ className, soc, voltage, width, height, charging, dark }) => {
     // constants
