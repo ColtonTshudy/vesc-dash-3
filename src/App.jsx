@@ -73,7 +73,8 @@ function App() {
     return (
         <div className="center-screen">
             <div className="viewport">
-                <img id="main-background" src={Miku} />
+                {/* <img id="main-background" src={Miku} /> */}
+                <img id="main-background" src={Trees} />
 
                 <div className='fullscreen-container'>
                     <div id='info-box'>
