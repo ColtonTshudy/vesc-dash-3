@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Profiler } from 'react'
 import './css/App.css'
 import './css/Fonts.css'
 
@@ -73,7 +73,7 @@ function App() {
     return (
         <div className="center-screen">
             <div className="viewport">
-                <img src={Trees} style={{ position: 'absolute', width: '100%', height: '100%', filter: 'brightness(1) blur(0px)' }} />
+                <img id="main-background" src={Miku} />
 
                 <div className='fullscreen-container'>
                     <div id='info-box'>
@@ -108,10 +108,10 @@ function App() {
                     </div>
                 </div>
 
-                <div className='fullscreen-container'>
-                    <Speedometer className='gauges' value={data.mph} min={0} max={config['max_speed']}/>
-                    <PowerGauge className='gauges' value={power_in / 1000} min={0} max={config['max_power']}/>
-                </div>
+                    <div className='fullscreen-container'>
+                        <Speedometer className='gauges' value={data.mph} min={0} max={config['max_speed']} />
+                        <PowerGauge className='gauges' value={power_in / 1000} min={0} max={config['max_power']} />
+                    </div>
 
                 <div className='fullscreen-container'>
                     <div id='readout-container'>
@@ -128,6 +128,10 @@ function App() {
 
 const Probe = () => {
     console.log('re-rendered')
+}
+
+function onRender(id, phase, actualDuration, baseDuration, startTime, commitTime) {
+    console.log(`${id}: ${actualDuration}`)
 }
 
 export default App

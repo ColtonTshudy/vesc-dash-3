@@ -1,38 +1,30 @@
 import React, { useRef, useEffect } from 'react';
 import { RadialGauge } from 'canvas-gauges';
-import './css/gauges.css'
+import './css/power-gauge.css'
+
+const startAngle = -135
+const spanAngle = -135
 
 const PowerGauge = ({ className, value = 0, min = 0, max = 5}) => {
     const canvasRef = useRef();
     const divRef = useRef();
     const gaugeRef = useRef();
+    const angle = Math.abs(value)/max * (spanAngle) + startAngle;
 
     useEffect(() => {
+        const size = divRef.current.clientHeight;
+
         const options = {
             renderTo: canvasRef.current,
-            width: divRef.current.clientHeight,
-            height: divRef.current.clientHeight,
-            minValue: min,
-            maxValue: max,
-            value: Math.abs(value),
+            width: size,
+            height: size,
             highlights: [],
             majorTicks: __linspace(max, min, 6),
-            minorTicks: 5,
-            needleType: "line",
-            needleWidth: 3,
-            colorNeedleEnd: "rgb(100,100,255,1)",
-            colorNeedleShadowDown: "rgb(0,0,0,1)",
-            colorNeedle: "rgb(200,200,255,1)",
-            needleStart: 0,
-            needleEnd: 100,
+            minorTicks: 4,
+            needle: false,
             fontNumbers: "Nasalization",
-            barStartPosition: "right",
             colorPlate: 'transparent',
             fontNumbersSize: 25,
-            valueInt: 2,
-            valueDec: 0,
-            colorValueText: 'black',
-            fontUnitsSize: 25,
             ticksAngle: 135,
             startAngle: 180,
             valueBox: false,
@@ -51,9 +43,9 @@ const PowerGauge = ({ className, value = 0, min = 0, max = 5}) => {
             colorBorderInnerEnd: "transparent",
             colorBorderMiddleEnd: "transparent",
             colorBorderOuterEnd: "transparent",
-            animation: true,
-            animationRule: 'linear',
-            animationDuration: 100,
+            animation: false,
+            // animationRule: 'linear',
+            // animationDuration: 100,
         }
 
         gaugeRef.current = new RadialGauge(options).draw();
@@ -64,13 +56,19 @@ const PowerGauge = ({ className, value = 0, min = 0, max = 5}) => {
         };
     }, [min, max]);
 
-    useEffect(() => {
-        gaugeRef.current.value = Math.abs(value)
-    }, [value])
-
     return (
         <div className={className} ref={divRef}>
             <canvas ref={canvasRef} />
+            <div id="pm-needle-container" style={{
+                rotate: `${angle}deg`,
+            }}>
+            <div id="pm-center">
+                    <div id="pm-center-emboss" />
+                </div>
+                <div id="pm-needle">
+                    <div id="pm-needle-tip" />
+                </div>
+            </div>
         </div>
     )
 };

@@ -1,0 +1,69 @@
+#pm-needle-container{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.2s;
+}
+
+#pm-needle{
+    position: absolute;
+    width: 50%;
+    height: 1.5%;
+    left: 6%;
+    background: linear-gradient(black, limegreen 30%, limegreen 70%, black);
+    border-radius: 2px;
+}
+
+#pm-needle:before {
+    content:"";
+    position: absolute;
+    inset: 0px;
+    background: linear-gradient(to left, transparent 50%, black 140%);
+}
+
+#pm-needle-tip{
+    position: absolute;
+    width: 75%;
+    height: 100%;
+    left: 0%;
+}
+
+#pm-needle-tip:before {
+    content:"";
+    position: absolute;
+    inset: -5px;
+    z-index: -1;
+    background: linear-gradient(to left, limegreen, transparent);
+    filter: blur(10px);
+}
+
+#pm-center{
+    position: absolute;
+    width: 10%;
+    aspect-ratio: 1 / 1;
+    background-color: black;
+    border-radius: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow:hidden;
+
+    box-shadow: 0 0 5px 2px black;
+}
+
+#pm-center-emboss{
+    width: 100%;
+    height: 30%;
+    
+    background-color: grey;
+    box-shadow: inset 0 0 5px 2px black;
+}

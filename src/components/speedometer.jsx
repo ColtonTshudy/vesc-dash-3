@@ -1,12 +1,17 @@
 import React, { useRef, useEffect } from 'react';
 import { RadialGauge } from 'canvas-gauges';
-import './css/gauges.css'
-import '../css/fonts.css'
+import './css/speedometer.css'
 
-const Speedometer = ({ className, value = 0, min = 0, max = 5}) => {
+const startAngle = -45
+const spanAngle = 135
+
+const refreshRate = 100 //ms
+
+const Speedometer = ({ className, value = 0, min = 0, max = 5 }) => {
     const canvasRef = useRef();
     const gaugeRef = useRef();
     const divRef = useRef();
+    const angle = Math.abs(value)/max * (spanAngle) + startAngle;
 
     useEffect(() => {
         const size = divRef.current.clientHeight;
@@ -15,69 +20,52 @@ const Speedometer = ({ className, value = 0, min = 0, max = 5}) => {
             renderTo: canvasRef.current,
             width: size,
             height: size,
-            minValue: min,
-            maxValue: max,
-            value: min,
             highlights: [],
             majorTicks: __linspace(min, max, 6),
-            minorTicks: 5,
-            needleType: "line",
-            needleWidth: 3,
-            colorNeedleEnd: "rgb(255,0,0,1)",
-            colorNeedleShadowDown: "rgb(0,0,0,1)",
-            colorNeedle: "rgb(255,200,200,1)",
-            needleStart: 0,
-            needleEnd: 100,
+            minorTicks: 4,
+            needle: false,
             fontNumbers: "Nasalization",
-            barStartPosition: "left",
             colorPlate: "transparent",
             fontNumbersSize: 25,
-            valueInt: 2,
-            valueDec: 0,
-            colorValueText: 'black',
-            fontUnitsSize: 25,
             ticksAngle: 135,
             startAngle: 45,
             valueBox: false,
-            borders: true,
             borderShadowWidth: 0,
             colorNeedleCircleOuter: "transparent",
             colorNeedleCircleInner: "transparent",
             colorNeedleCircleOuterEnd: "transparent",
             colorNeedleCircleInnerEnd: "transparent",
             colorMajorTicks: 'white',
-            colorMinorTicks: 'lightgrey',
+            colorMinorTicks: 'grey',
             colorNumbers: 'white',
+            borders: true,
             colorBorderInner: "transparent",
             colorBorderMiddle: "transparent",
             colorBorderOuter: "transparent",
             colorBorderInnerEnd: "transparent",
             colorBorderMiddleEnd: "transparent",
             colorBorderOuterEnd: "transparent",
-            animation: true,
-            animationRule: 'linear',
-            animationDuration: 100,
-            // barProgress: true,
-            // barStrokeWidth: 0,
-            // barWidth: 5,
-            // colorBar: "transparent",
-            // colorBarProgress: "red",
-            // needle: false,
         }
         gaugeRef.current = new RadialGauge(options).draw();
-        
+
         return () => {
             gaugeRef.current.destroy();
         };
     }, [min, max]);
 
-    useEffect(() => {
-        gaugeRef.current.value = Math.abs(value)
-    }, [value])
-
     return (
         <div className={className} ref={divRef}>
             <canvas ref={canvasRef} />
+            <div id="sm-needle-container" style={{
+                rotate: `${angle}deg`,
+            }}>
+            <div id="sm-center">
+                    <div id="sm-center-emboss" />
+                </div>
+                <div id="sm-needle">
+                    <div id="sm-needle-tip" />
+                </div>
+            </div>
         </div>
     )
 };
