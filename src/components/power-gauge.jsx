@@ -7,9 +7,9 @@ const spanAngle = -135
 
 const PowerGauge = ({ className, value = 0, min = 0, max = 5}) => {
     const canvasRef = useRef();
-    const divRef = useRef();
     const gaugeRef = useRef();
-    const angle = Math.abs(value)/max * (spanAngle) + startAngle;
+    const divRef = useRef();
+    const angle = isNaN(value) ? startAngle : Math.abs(value)/max * (spanAngle) + startAngle;
 
     useEffect(() => {
         const size = divRef.current.clientHeight;

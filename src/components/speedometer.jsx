@@ -5,13 +5,11 @@ import './css/speedometer.css'
 const startAngle = -45
 const spanAngle = 135
 
-const refreshRate = 100 //ms
-
 const Speedometer = ({ className, value = 0, min = 0, max = 5 }) => {
     const canvasRef = useRef();
     const gaugeRef = useRef();
     const divRef = useRef();
-    const angle = Math.abs(value)/max * (spanAngle) + startAngle;
+    const angle = isNaN(value) ? startAngle : Math.abs(value)/max * (spanAngle) + startAngle;
 
     useEffect(() => {
         const size = divRef.current.clientHeight;
