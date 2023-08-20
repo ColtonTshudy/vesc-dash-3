@@ -15,7 +15,7 @@
     width: 50%;
     height: 1.5%;
     left: 6%;
-    background: linear-gradient(black, limegreen 30%, limegreen 70%, black);
+    background: linear-gradient(black, red 30%, red 70%, black);
     border-radius: 2px;
 }
 
@@ -38,7 +38,7 @@
     position: absolute;
     inset: -5px;
     z-index: -1;
-    background: linear-gradient(to left, limegreen, transparent);
+    background: linear-gradient(to left, red, transparent);
     filter: blur(10px);
 }
 
