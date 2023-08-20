@@ -10,8 +10,8 @@ function createWindow() {
         width: 1024,
         height: 800,
         webPreferences: { nodeIntegration: true, contextIsolation: false },
-        kiosk: false,
-        frame: true,
+        kiosk: true,
+        frame: false,
     });
     // and load the index.html of the app.
     console.log(__dirname);
