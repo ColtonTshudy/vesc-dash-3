@@ -3,11 +3,6 @@
  * version: 07/31/2023
  */
 
-:root {
-    --fg: white;
-    --bg: black;
-}
-
 body {
     background: black;
     margin: 0px;
@@ -80,6 +75,11 @@ body {
     height: 100%;
 }
 
+.battery {
+    height: 90%;
+    width: 55%;
+}
+
 #temperature-box {
     display: flex;
     align-items: center;
@@ -140,7 +140,7 @@ body {
 
 .gauges {
     height: 85%;
-    margin: -5%;
+    margin: 0%;
     
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
@@ -149,9 +149,9 @@ body {
 }
 
 #readout-container {
-    margin-top: 25%;
-    height: 35%;
-    width: 55%;
+    margin-top: 30%;
+    height: 40%;
+    width: 63%;
     display: flex;
     align-items: top;
     justify-content: space-evenly;
@@ -164,4 +164,10 @@ body {
 
 .readout-spacer{
     flex: 0 0 60%;
+}
+
+.seperator {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--fg), transparent);
 }

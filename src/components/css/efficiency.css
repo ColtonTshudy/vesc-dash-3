@@ -16,12 +16,6 @@
     font-size: 65%;
 }
 
-#eff-seperator {
-    width: 100%;
-    flex: 0 0 2%;
-    background: linear-gradient(to right, black, white, black);
-}
-
 #eff-subtitle {
     flex: 0 0 18%;
     width: 100%;

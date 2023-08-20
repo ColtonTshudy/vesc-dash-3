@@ -1,4 +1,4 @@
-import { useEffect, useState, Profiler } from 'react'
+import { useEffect, useState } from 'react'
 import './css/App.css'
 import './css/Fonts.css'
 
@@ -29,6 +29,7 @@ function App() {
     const [config, setConfig] = useState({}) //Default config values
     const [socketConn, setSocketConn] = useState(false)
     const [dbConn, setDbConn] = useState(false)
+    const [darkMode, setDarkMode] = useState(true)
 
     useEffect(() => {
         const socket = new Socket(5002)
@@ -78,7 +79,13 @@ function App() {
     const efficiency = power_out / power_in
 
     return (
-        <div className="center-screen">
+        <div className="center-screen" onClick={() => {
+            setDarkMode((prevState) => !prevState)
+        }}
+        style = {{
+            "--fg": darkMode ? 'white' : 'black',
+            "--bg": darkMode ? 'black' : 'white',
+        }}>
             <div className="viewport">
                 {/* <img id="main-background" src={Miku} /> */}
                 {/* <img id="main-background" src={Trees} /> */}
@@ -88,7 +95,7 @@ function App() {
 
                         <div id="header-box">
                             <Clock className='clock' />
-                            <Battery soc={soc} voltage={data.battery_voltage} width={140} height={35} charging={power_in < 0} />
+                            <Battery className='battery' soc={soc} voltage={data.battery_voltage} charging={power_in < 0} />
                         </div>
 
                         <div id="temperature-box">
@@ -116,10 +123,10 @@ function App() {
                     </div>
                 </div>
 
-                    <div className='fullscreen-container'>
-                        <Speedometer className='gauges' value={data.mph} min={0} max={config['max_speed']} />
-                        <PowerGauge className='gauges' value={power_in / 1000} min={0} max={config['max_power']} />
-                    </div>
+                <div className='fullscreen-container'>
+                    <Speedometer className='gauges' value={data.mph} min={0} max={config['max_speed']} darkMode={darkMode}/>
+                    <PowerGauge className='gauges' value={power_in / 1000} min={0} max={config['max_power']} darkMode={darkMode}/>
+                </div>
 
                 <div className='fullscreen-container'>
                     <div id='readout-container'>

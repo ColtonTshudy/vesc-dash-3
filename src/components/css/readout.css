@@ -6,8 +6,6 @@
 
     font-family: San Francisco;
     line-height: 0px;
-
-    color: white;
 }
 
 #ro-speed-box {
@@ -28,14 +26,6 @@
 
     font-style: italic;
     font-size: 10%;
-}
-
-#ro-seperator {
-    width: 100%;
-    flex: 0 0 1%;
-    background: linear-gradient(to right, transparent, white, transparent);
-    margin-top: 4%;
-    margin-bottom: 2%;
 }
 
 .ro-info {

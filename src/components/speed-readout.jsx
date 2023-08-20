@@ -21,7 +21,7 @@ const SpeedReadout = ({ className, velocity, topSpeed, avgSpeed }) => {
             <label id='ro-subtitle'>
                 mph
             </label>
-            <div id="ro-seperator" />
+            <div className="seperator" />
             <div className="ro-info">
                 <label>top</label>
                 <h1>{topSpeed}</h1>

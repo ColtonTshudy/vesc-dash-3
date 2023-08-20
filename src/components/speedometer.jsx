@@ -5,11 +5,11 @@ import './css/speedometer.css'
 const startAngle = -45
 const spanAngle = 135
 
-const Speedometer = ({ className, value = 0, min = 0, max = 5 }) => {
+const Speedometer = ({ className, value = 0, min = 0, max = 5, darkMode = true }) => {
     const canvasRef = useRef();
     const gaugeRef = useRef();
     const divRef = useRef();
-    const angle = isNaN(value) ? startAngle : Math.abs(value)/max * (spanAngle) + startAngle;
+    const angle = isNaN(value) ? startAngle : Math.abs(value) / max * (spanAngle) + startAngle;
 
     useEffect(() => {
         const size = divRef.current.clientHeight;
@@ -33,9 +33,9 @@ const Speedometer = ({ className, value = 0, min = 0, max = 5 }) => {
             colorNeedleCircleInner: "transparent",
             colorNeedleCircleOuterEnd: "transparent",
             colorNeedleCircleInnerEnd: "transparent",
-            colorMajorTicks: 'white',
+            colorMajorTicks: darkMode ? 'white' : 'black',
             colorMinorTicks: 'grey',
-            colorNumbers: 'white',
+            colorNumbers: darkMode ? 'white' : 'black',
             borders: true,
             colorBorderInner: "transparent",
             colorBorderMiddle: "transparent",
@@ -49,15 +49,17 @@ const Speedometer = ({ className, value = 0, min = 0, max = 5 }) => {
         return () => {
             gaugeRef.current.destroy();
         };
-    }, [min, max]);
+    }, [min, max, darkMode]);
 
     return (
-        <div className={className} ref={divRef}>
+        <div className={className} ref={divRef} style={{
+
+        }}>
             <canvas ref={canvasRef} />
             <div id="sm-needle-container" style={{
                 rotate: `${angle}deg`,
             }}>
-            <div id="sm-center">
+                <div id="sm-center">
                     <div id="sm-center-emboss" />
                 </div>
                 <div id="sm-needle">

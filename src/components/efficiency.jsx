@@ -20,7 +20,7 @@ const Efficiency = ({ className, value }) => {
                     {clamp(padZeros(0, value * 100), 0, 100)}%
                 </label>
             </div>
-            <div id="eff-seperator" />
+            <div className="seperator" />
             <label id='eff-subtitle' style={{
                 fontSize: `${height * .15}px`,
             }}>

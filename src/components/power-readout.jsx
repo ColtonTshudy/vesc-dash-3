@@ -20,7 +20,7 @@ const SpeedReadout = ({ className, power, topPower, avgPower }) => {
             <label id='ro-subtitle'>
                 kW
             </label>
-            <div id="ro-seperator" />
+            <div className="seperator" />
             <div className="ro-info">
                 <label>top</label>
                 <h1>{topPower}</h1>

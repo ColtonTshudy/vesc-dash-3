@@ -1,10 +1,10 @@
 import { useEffect, useState, useRef } from 'react'
 import './css/gear.css'
 
-const on_bg = 'white'
+const on_bg = 'var(--fg)'
 const off_bg = 'transparent'
-const on_fg = 'black'
-const off_fg = 'white'
+const on_fg = 'var(--bg)'
+const off_fg = 'var(--fg)'
 
 const Efficiency = ({ className, duty }) => {
     const [height, setHeight] = useState()
