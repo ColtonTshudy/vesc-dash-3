@@ -33,10 +33,15 @@ function App() {
     useEffect(() => {
         const socket = new Socket(5002)
 
+        const socketTimeout = setTimeout(() => {
+            setData({}) //reset data if socket doesn't transmit for 2 seconds
+        }, 2000);
+
         socket.getSocket().on('connect', () => setSocketConn(true))
 
         socket.getSocket().on('data', (data) => {
             setData(data)
+            clearInterval(socketTimeout)
         })
 
         socket.getSocket().on('config', (config) => {
