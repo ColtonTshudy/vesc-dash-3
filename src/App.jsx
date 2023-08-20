@@ -92,8 +92,8 @@ function App() {
                         </div>
 
                         <div id="temperature-box">
-                            <MosfetTemp value={data.mot_temp} width={125} height={40} warn={config['warn_temp_mot']} />
-                            <MotorTemp value={data.mos_temp} width={125} height={40} warn={config['warn_temp_mos']} />
+                            <MosfetTemp value={data.mos_temp} width={125} height={40} warn={config['warn_temp_mot']} />
+                            <MotorTemp value={data.mot_temp} width={125} height={40} warn={config['warn_temp_mos']} />
                         </div>
 
                         <div id="item-3">
