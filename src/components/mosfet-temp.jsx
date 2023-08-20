@@ -9,7 +9,7 @@ const MosfetTemp = ({ className, value, height, width, warn }) => {
         fillColor = 'orange'
 
     return (
-        <div id="mostemp_main" className={`${className}`} style={{
+        <div id="mostemp_main" className={className} style={{
             height: `${height}px`,
             width: `${width}px`,
         }}>

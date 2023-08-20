@@ -14,7 +14,7 @@ const DatabaseIndicator = ({ className,  connected }) => {
 
     return (
         <div className={className}>
-            <svg width="100%" height="100%" viewBox="0 0 24 24" stroke={fillColor} strokeWidth="1.5" strokeLinecap="round">
+            <svg width="100%" height="100%" viewBox="0 0 24 24" stroke={fillColor} strokeWidth="1.5" strokeLinecap="round" fill="transparent">
                 <path d="M4 18V6" />
                 <path d="M20 12L20 18" />
                 <path d="M12 10C16.4183 10 20 8.20914 20 6C20 3.79086 16.4183 2 12 2C7.58172 2 4 3.79086 4 6C4 8.20914 7.58172 10 12 10Z" />
