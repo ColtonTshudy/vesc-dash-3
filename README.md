@@ -1,6 +1,6 @@
 # Colton's VESC Dash
 
-S905X "Le Potato" 2gb based VESC dashboard
+"Le Potato" based VESC dashboard, using Vite + React
 
 ## Versions
 This project was created and verified with the following versions:
