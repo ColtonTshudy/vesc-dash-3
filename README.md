@@ -32,4 +32,3 @@ npm run estart
 This will run the program using the Electron renderer, which is a lightweight alternative to browser based rendering methods. The bash script includes my file path, which must be changed if want to use it. It was purely for debugging - not at all necessary for function.
 <br /> <br />
 If you want to launch using a browser, the original vite scripts are still available.
-```
