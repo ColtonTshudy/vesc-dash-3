@@ -1,8 +1,35 @@
-# React + Vite
+# Colton's VESC Dash
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+S905X "Le Potato" 2gb based VESC dashboard
 
-Currently, two official plugins are available:
+## Versions
+This project was created and verified with the following versions:
+<br /><br />
+Software/Firmware:
+* Node 18.17.0
+* npm 9.6.7
+* react 18.2.0
+* electron 25.4.0
+* (vesc firmware) bldc 6.00
+* Raspbian 11 (bullseye) for arm64 aml s905x
+* can-utils 2020.11.0-1 
+<br /><br />
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Hardware:
+* vesc hw revision 6
+* Le Potato 2GB s905x
+* Diplay 7" HDMI 1024 x 600px
+* MCP2515 & TJA1050 SPI CAN module (modified for 3.3v)
+
+## Build and launch
+Run the following:
+```
+cd <git directory>
+npm i
+npm run build
+npm run estart
+```
+This will run the program using the Electron renderer, which is a lightweight alternative to browser based rendering methods. The bash script includes my file path, which must be changed if want to use it. It was purely for debugging - not at all necessary for function.
+<br /> <br />
+If you want to launch using a browser, the original vite scripts are still available.
+```
