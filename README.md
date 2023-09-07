@@ -6,6 +6,7 @@ S905X "Le Potato" 2gb based VESC dashboard
 This project was created and verified with the following versions:
 <br /><br />
 Software/Firmware:
+* Vite 4.4.5
 * Node 18.17.0
 * npm 9.6.7
 * react 18.2.0
