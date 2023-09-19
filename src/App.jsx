@@ -1,3 +1,11 @@
+/**
+ * TODO
+ * 
+ * - Check if efficiency is correct
+ * - Import database data from backend
+ * - Only switch to drive or reverse if kW is nonzero
+ */
+
 import { useEffect, useState } from 'react'
 import './css/App.css'
 import './css/Fonts.css'
@@ -73,7 +81,7 @@ function App() {
         }
     }, [])
 
-    const soc = (config['capacity_ah'] - data.ah_consumed) / config['capacity_ah']
+    const soc = (config['capacity_ah'] - data.used_ah ) / config['capacity_ah']
     const power_in = data.battery_voltage * data.battery_current
     const power_out = data.motor_voltage * data.motor_current;
     const efficiency = power_out / power_in
@@ -82,10 +90,10 @@ function App() {
         <div className="center-screen" onClick={() => {
             setDarkMode((prevState) => !prevState)
         }}
-        style = {{
-            "--fg": darkMode ? 'white' : 'black',
-            "--bg": darkMode ? 'black' : 'white',
-        }}>
+            style={{
+                "--fg": darkMode ? 'white' : 'black',
+                "--bg": darkMode ? 'black' : 'white',
+            }}>
             <div className="viewport">
                 {/* <img id="main-background" src={Miku} /> */}
                 {/* <img id="main-background" src={Trees} /> */}
@@ -115,7 +123,7 @@ function App() {
                         </div>
 
                         <div id="item-4">
-                            <Gear className='gear' duty={data.duty_cycle} />
+                            <Gear className='gear' duty={data.duty_cycle} power={power_in} />
                         </div>
 
                         <BottomDisplay className='bottom-display' odo={data.odometer} range={placeholder} />
@@ -124,15 +132,15 @@ function App() {
                 </div>
 
                 <div className='fullscreen-container'>
-                    <Speedometer className='gauges' value={data.mph} min={0} max={config['max_speed']} darkMode={darkMode}/>
-                    <PowerGauge className='gauges' value={power_in / 1000} min={0} max={config['max_power']} darkMode={darkMode}/>
+                    <Speedometer className='gauges' value={data.mph} min={0} max={config['max_speed']} darkMode={darkMode} />
+                    <PowerGauge className='gauges' value={power_in / 1000} min={0} max={config['max_power']} darkMode={darkMode} />
                 </div>
 
                 <div className='fullscreen-container'>
                     <div id='readout-container'>
-                        <SpeedReadout className="readout" velocity={data.mph} topSpeed={placeholder} avgSpeed={placeholder} />
+                        <SpeedReadout className="readout" velocity={data.mph} topSpeed={data.max_mph} avgSpeed={data.avg_mph} />
                         <div className="readout-spacer" />
-                        <PowerReadout className="readout" power={power_in / 1000} topPower={placeholder} avgPower={placeholder} />
+                        <PowerReadout className="readout" power={power_in / 1000} topPower={data.max_power} avgPower={data.avg_power} />
                     </div>
                 </div>
                 {/* <Probe /> */}

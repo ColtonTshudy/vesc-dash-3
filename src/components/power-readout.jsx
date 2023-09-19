@@ -23,11 +23,11 @@ const SpeedReadout = ({ className, power, topPower, avgPower }) => {
             <div className="seperator" />
             <div className="ro-info">
                 <label>top</label>
-                <h1>{topPower}</h1>
+                <h1>{padZeros(1, topPower / 1000)}</h1>
             </div>
             <div className="ro-info">
                 <label>avg</label>
-                <h1>{avgPower}</h1>
+                <h1>{padZeros(1, avgPower / 1000)}</h1>
             </div>
         </div >
     );
