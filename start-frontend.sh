@@ -1,4 +1,4 @@
-DISPLAY=:0 xdotool mousemove 2000 2000
+DISPLAY=:0 unclutter -idle 1
 cd /home/tomos/Projects/VESCDash/vesc-dash-3
 npm run estart #Electron renderer
 
