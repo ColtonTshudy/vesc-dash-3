@@ -81,15 +81,13 @@ function App() {
         }
     }, [])
 
-    const soc = (config['capacity_ah'] - data.used_ah ) / config['capacity_ah']
+    const soc = (config['capacity_ah'] - data.used_ah) / config['capacity_ah']
     const power_in = data.battery_voltage * data.battery_current
     const power_out = data.motor_voltage * data.motor_current;
     const efficiency = power_out / power_in
 
     return (
-        <div className="center-screen" onClick={() => {
-            setDarkMode((prevState) => !prevState)
-        }}
+        <div className="center-screen"
             style={{
                 "--fg": darkMode ? 'white' : 'black',
                 "--bg": darkMode ? 'black' : 'white',
@@ -99,7 +97,9 @@ function App() {
                 {/* <img id="main-background" src={Trees} /> */}
 
                 <div className='fullscreen-container'>
-                    <div id='info-box'>
+                    <div id='info-box' onClick={() => {
+                        setDarkMode((prevState) => !prevState)
+                    }}>
 
                         <div id="header-box">
                             <Clock className='clock' />
