@@ -38,9 +38,11 @@ function App() {
     const [socketConn, setSocketConn] = useState(false)
     const [dbConn, setDbConn] = useState(false)
     const [darkMode, setDarkMode] = useState(true)
+    const [socketRef, setSocketRef] = useState(null)
 
     useEffect(() => {
         const socket = new Socket(5002)
+        setSocketRef(socket)
         let socketTimeout = null
 
         socket.getSocket().on('connect', () => setSocketConn(true))
@@ -78,6 +80,7 @@ function App() {
 
         return () => {
             socket.disconnect()
+            setSocketRef(null)
         }
     }, [])
 
@@ -97,6 +100,15 @@ function App() {
                 {/* <img id="main-background" src={Trees} /> */}
 
                 <div className='fullscreen-container'>
+                    <div id="reset-capacity-button" onClick={() => { try { socketRef.resetBatteryCapacity() } catch { } }} >
+                        <label>
+                            Reset
+                        </label>
+                        <label>
+                            Battery
+                        </label>
+                    </div>
+
                     <div id='info-box' onClick={() => {
                         setDarkMode((prevState) => !prevState)
                     }}>

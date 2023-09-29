@@ -40,6 +40,10 @@ class Socket {
         this.socket.emit('subscribeToCAN')
     }
 
+    resetBatteryCapacity() {
+        this.socket.emit('resetBatteryCapacity')
+    }
+
     getSocket() {
         return this.socket;
     }

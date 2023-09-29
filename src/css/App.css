@@ -171,3 +171,42 @@ body {
     height: 2px;
     background: linear-gradient(to right, transparent, var(--fg), transparent);
 }
+
+#reset-capacity-button {
+    top: 0%;
+    right: 0%;
+    height: 100px;
+    width: 125px;
+    z-index: 100;
+
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+    border-bottom-left-radius: 50px;
+
+    font-family: San Francisco;
+    font-weight: 800;
+    font-size: 20px;
+    
+    color: var(--fg);
+    background: var(--bg);
+    border: solid 2px var(--fg);
+}
+
+#reset-capacity-button:hover {
+    animation: buttonHover 2s 1;
+}
+
+@keyframes buttonHover {
+    0% {
+        color: var(--bg);
+        background: var(--fg);
+    }
+    100% {
+        color: var(--fg);
+        background: var(--bg);
+    }
+  }
